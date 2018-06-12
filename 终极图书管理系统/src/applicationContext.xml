@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    <!-- 这里将服务层的接口进行诸如 -->
+    <bean id="userService" class="my.lc.library.dataExchange.UserService">
+    <property name="userinterface" ref="userinterface"></property>
+    <property name="bookinterface" ref="bookinterface"></property>
+    <property name="recordinterface" ref="recordinterface"></property>
+    </bean> 
+    <!-- 利用set方法将sessionFactory注入进去 -->   
+    <bean id="userinterface" class="my.lc.library.dataExchange.UserDao">
+   <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean> 
+    <bean id="bookinterface" class="my.lc.library.dataExchange.BookDao">
+   <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean> 
+    <bean id="recordinterface" class="my.lc.library.dataExchange.RecordDao">
+   <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean> 
+    
+    
+    <!-- 这里是数据库基本配置 -->
+	 <bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/library">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="092248"></property>
+	</bean>
+	
+	
+	<!-- 对连接数据的连接 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+ <property name="hibernateProperties"> 
+  <props>
+  <prop key="hibernate.dialect"> org.hibernate.dialect.SQLServerDialect </prop> 
+  <prop key="hibernate.show_sql">true</prop>
+  <prop key="hibernate.format_sql">true</prop>
+   </props>
+  </property>
+		<!-- 添加hbm关联 -->
+		<property name="mappingResources">
+		<list>
+		<value>user.hbm.xml</value>
+		<value>record.hbm.xml</value>
+		<value>book.hbm.xml</value>
+		</list>
+		</property>
+	</bean>
+	
+	
+	
+</beans>

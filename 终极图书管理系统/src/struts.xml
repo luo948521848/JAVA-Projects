@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+
+	<package name="default" namespace="/" extends="struts-default">
+	<!-- action的默认方式是 excute -->
+		<action name="loginaction" class="Action.LoginAction">
+			<result name="true">/myBlob.jsp</result>
+			<result name="false">/error.jsp</result>
+		    <result name="success">/index.jsp</result>
+		    <result name="faild">/adduser.jsp</result>
+		</action>
+	</package>
+	<!-- 打开动态调用Action -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+</struts>    
