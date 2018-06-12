@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="LIbrarys.Record" table="tb_record">
+<!-- 主键 -->
+<id name="r_name" column="r_name" type="java.lang.String">
+<!-- 固定值：主键生成策略 -->
+
+</id>
+<!-- 普通属性 -->
+
+<property name="rb_name" column="rb_name" type="java.lang.String"></property>
+<property name="LendDate" column="LendDate" type="java.lang.String"></property>
+<property name="SendDate" column="SendDate" type="java.lang.String"></property>
+
+</class>
+</hibernate-mapping>
