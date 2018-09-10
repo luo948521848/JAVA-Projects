@@ -1,0 +1,12 @@
+package dem008;
+
+public abstract class Printer {
+	
+	
+	public void print()
+	{
+		
+		System.out.println("‘Î“Ù¥Û");
+	}
+
+}
